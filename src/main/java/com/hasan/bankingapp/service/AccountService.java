@@ -6,4 +6,6 @@ import com.hasan.bankingapp.dto.AccountDto;
 public interface AccountService {
     AccountDto creAccount(AccountDto accountDto);
 
+    AccountDto getAccountById(Long id);
+
 }

@@ -1,8 +1,14 @@
 package com.hasan.bankingapp.controller;
 
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hasan.bankingapp.dto.AccountDto;
 import com.hasan.bankingapp.service.AccountService;
 
 @RestController
@@ -15,7 +21,14 @@ public class AccountController {
     }
 
     //Add acount rest API
+    @PostMapping
+    public ResponseEntity<AccountDto> addAccount(@RequestBody AccountDto accountDto){
+        return new ResponseEntity<>(accountService.creAccount(accountDto), HttpStatus.CREATED);
+    }
 
-
-    
+    public ResponseEntity<AccountDto> getAccountById(Long id){
+        AccountDto accountDto = accountService.getAccountById(id);
+        return ResponseEntity.ok(accountDto);
+    }
+    // https://youtu.be/5i379k0Xh_s?t=1851
 }
